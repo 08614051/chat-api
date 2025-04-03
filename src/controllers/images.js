@@ -22,6 +22,12 @@ class ImagesControllers {
       const { sender, receiver } = req.body;
       const { file } = req;
 
+      
+      if(!file) return res.status(404).json({
+        status: 'error',
+        msg: 'image empty'
+      })
+
       const urlServer = process.env.MY_SERVER_URL + `/public/${file.filename}`;
 
       const msg = !process.env.PROD
