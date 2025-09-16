@@ -29,13 +29,13 @@ class ImagesControllers {
       })
 
       const urlServer = process.env.MY_SERVER_URL + `/public/${file.filename}`;
-
+      console.log('url de la imagen: ', urlServer)
       const msg = !process.env.PROD
         ? {
             secure_url: urlServer,
           }
         : await uploadImage(urlServer);
-
+      console.log("imagen: ",msg)
       const errors = validateMessages({
         sender,
         receiver,
